@@ -1,0 +1,16 @@
+{
+  "title": "status bot",
+  "name": "Laborstatus",
+  "version": "0.0.1",
+  "description": "A simple Firefox Addon which looks, if the labor ist open or not",
+  "main": "index.js",
+  "author": "Tobias Reininghaus <etwas@runealbut.de>",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}
