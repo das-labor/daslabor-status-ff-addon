@@ -1,5 +1,6 @@
 var buttons = require('sdk/ui/button/action');
 var { setInterval } = require("sdk/timers");
+var { setTimeout } = require("sdk/timers");
 var tabs = require("sdk/tabs");
 var Request = require("sdk/request").Request;
 
@@ -40,32 +41,57 @@ Laborstatus:
 
 */
 
-
-setInterval(function(){
+function get_labor_status(){
     var getstatus = Request({
       url: "http://das-labor.org/status/status.php?status",
       onComplete: function (response) {
         var text = response.text;
         console.log("Status: " + text);
         labor_status = text;
-
+         console.log("Laborstatus: " + labor_status);
+        if(labor_status == "CLOSED"){
+            button.icon = closed_icons;
+        }
+        else if(labor_status == "OPEN"){
+            button.icon = open_icons;
+            button.label = "Visit 'daslabor' its open !";
+        }else{
+            button.icon = icons;
+        }
       }
     });
     getstatus.get();
     console.log("Laborstatus: " + labor_status);
 
-                console.log("Laborstatus: " + labor_status);
-                if(labor_status == "CLOSED"){
-                    button.icon = closed_icons;
-                }
-                else if(labor_status == "OPEN"){
-                    button.icon = open_icons;
-                    button.label = "Visit 'daslabor' its open !";
-                }else{
-                    button.icon = icons;
-                }
+    /*console.log("Laborstatus: " + labor_status);
+    if(labor_status == "CLOSED"){
+        button.icon = closed_icons;
+    }
+    else if(labor_status == "OPEN"){
+        button.icon = open_icons;
+        button.label = "Visit 'daslabor' its open !";
+    }else{
+        button.icon = icons;
+    }
+    */
 
-}, 3000);
+}
+/* check status on Addon start
+*/
+//get_labor_status();
+setTimeout(function() {
+    console.log("timeout status" + labor_status);
+    //get_labor_status()
+  return get_labor_status();
+}, 3000)
+
+
+/* check status every xxx minutes
+*/
+setInterval(function(){
+    console.log("interval status" + labor_status);
+    return get_labor_status();
+}, 1*60*1000);
 
 
 
