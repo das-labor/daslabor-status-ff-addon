@@ -98,6 +98,4 @@ setInterval(function(){
 function handleClick(state) {
   tabs.open("http://www.das-labor.org/");
    // var data = getstatus.get();
-   // console.log("klick: "+ JSON.stringify(data)+" labirstatus: " + labor_status);
-
 }
