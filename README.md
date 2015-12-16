@@ -11,15 +11,23 @@
 npm install jpm -g
 ```
 
+Run test:
 
 ```
 jpm run
 ```
 
+
+Test and run in firefox:
 ```
 jpm run -b /usr/bin/firefox 
 ```
 
+Build:
+
+```
+jpm xpi
+```
 
 
 

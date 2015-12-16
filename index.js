@@ -54,7 +54,7 @@ function get_labor_status(){
         }
         else if(labor_status == "OPEN"){
             button.icon = open_icons;
-            button.label = "Visit 'daslabor' its open !";
+            button.label = 'Visit "das labor" its open !';
         }else{
             button.icon = icons;
         }
