@@ -1,8 +1,13 @@
 var buttons = require('sdk/ui/button/action');
+var { ToggleButton } = require("sdk/ui/button/toggle");
 var { setInterval } = require("sdk/timers");
 var { setTimeout } = require("sdk/timers");
 var tabs = require("sdk/tabs");
 var Request = require("sdk/request").Request;
+var panels = require("sdk/panel");
+var self = require("sdk/self");
+
+var txt, parser, xmlDoc;
 
 var labor_status = "";
 
@@ -24,6 +29,34 @@ var closed_icons = {
     "32": "./laborlogo_closed_32.png",
     "64": "./laborlogo_closed_64.png"
   };
+
+var button2 = ToggleButton({
+  id: "my-button",
+  label: "my button",
+  icon: icons,
+  onChange: handleChange
+});
+
+var panel = panels.Panel({
+
+  contentURL: self.data.url("panel.html"),
+  onHide: handleHide
+});
+
+function handleChange(state) {
+  if (state.checked) {
+    panel.show({
+      position: button2
+    });
+  }
+}
+
+function handleHide() {
+  button2.state('window', {checked: false});
+}
+
+
+
 
 var button = buttons.ActionButton({
   id: "labor-link",
@@ -74,8 +107,31 @@ function get_labor_status(){
         button.icon = icons;
     }
     */
-
 }
+
+
+function rss_events(){
+var events = Request({
+      url: "http://www.das-labor.org/termine.rss",
+      onComplete: function (response) {
+        var text = response.text;
+        //console.log("Events " + text);
+
+        //parser = new DOMParser();
+        //xmlDoc = parser.parseFromString(text,"text/xml");
+
+        /*xmlDoc = response.text;
+        var x = xmlDoc.getElementsByTagName("title");
+        for (i = 0; i <x.length; i++) {
+          // do something for each node
+            console.log("z",i," ",x[i]);
+          }*/
+      }
+    });
+    events.get();
+};
+
+
 /* check status on Addon start
 */
 //get_labor_status();
@@ -90,9 +146,10 @@ setTimeout(function() {
 */
 setInterval(function(){
     console.log("interval status" + labor_status);
+    rss_events();
     return get_labor_status();
-}, 1*60*1000);
-
+//}, 1*60*1000);
+}, 1000);
 
 
 function handleClick(state) {
