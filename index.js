@@ -40,6 +40,7 @@ var button2 = ToggleButton({
 var panel = panels.Panel({
 
   contentURL: self.data.url("panel.html"),
+  contentScriptFile: self.data.url("panel.js"),
   onHide: handleHide
 });
 
