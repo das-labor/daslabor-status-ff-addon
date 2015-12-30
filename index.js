@@ -38,6 +38,10 @@ var closed_icons = {
   };
 
 
+
+/*
+get Labor Events
+*/
   function rss_events(){
     //eventitems = [];
   var events = Request({
@@ -111,7 +115,7 @@ function handleChange(state) {
 panel.on("show",function(){
   //panel.port.emit("früchte",fruits);
    rss_events();
-  console.log("onshow",eventitems);
+  //console.log("onshow",eventitems);
   //panel.port.emit("items",rss_events());
 });
 
@@ -148,12 +152,15 @@ function get_labor_status(){
          console.log("Laborstatus: " + labor_status);
         if(labor_status == "CLOSED"){
             button.icon = closed_icons;
+            panel.port.emit("status","CLOSED");
         }
         else if(labor_status == "OPEN"){
             button.icon = open_icons;
             button.label = 'Visit "das labor" its open !';
+            panel.port.emit("status","OPEN");
         }else{
             button.icon = icons;
+            panel.port.emit("status","unknown");
         }
       }
     });
