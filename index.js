@@ -96,7 +96,7 @@ var button2 = ToggleButton({
 });
 
 var panel = panels.Panel({
-
+  width: 400,
   contentURL: self.data.url("panel.html"),
   contentScriptFile: self.data.url("panel.js"),
   onHide: handleHide
