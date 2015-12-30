@@ -12,7 +12,7 @@ var txt, parser, xmlDoc;
 
 var eventitems = [];
 
-    //fruits = ["Banana", "Orange", "Apple", "Mango","meh"];
+
 
 
 
@@ -89,8 +89,8 @@ get Labor Events
 
 
 var button2 = ToggleButton({
-  id: "my-button",
-  label: "my button",
+  id: "panel-button",
+  label: "dasLabor",
   icon: icons,
   onChange: handleChange
 });
@@ -125,7 +125,7 @@ function handleHide() {
 
 
 
-
+/*
 var button = buttons.ActionButton({
   id: "labor-link",
   label: "Visit daslabor",
@@ -133,7 +133,7 @@ var button = buttons.ActionButton({
   icon: icons,
   onClick: handleClick
 });
-
+*/
 
 
 /*
@@ -151,33 +151,26 @@ function get_labor_status(){
         labor_status = text;
          console.log("Laborstatus: " + labor_status);
         if(labor_status == "CLOSED"){
-            button.icon = closed_icons;
+            //button.icon = closed_icons;
+            button2.icon = closed_icons;
             panel.port.emit("status","CLOSED");
         }
         else if(labor_status == "OPEN"){
-            button.icon = open_icons;
-            button.label = 'Visit "das labor" its open !';
+            //button.icon = open_icons;
+            button2.icon = open_icons;
+            //button.label = 'Visit "das labor" its open !';
+            button2.label = 'Visit "das labor" its open !';
             panel.port.emit("status","OPEN");
         }else{
-            button.icon = icons;
-            panel.port.emit("status","unknown");
+            //button.icon = icons;
+            button2.icon = icons;
+            panel.port.emit("status","UNKNOWN");
         }
       }
     });
     getstatus.get();
     console.log("Laborstatus: " + labor_status);
 
-    /*console.log("Laborstatus: " + labor_status);
-    if(labor_status == "CLOSED"){
-        button.icon = closed_icons;
-    }
-    else if(labor_status == "OPEN"){
-        button.icon = open_icons;
-        button.label = "Visit 'daslabor' its open !";
-    }else{
-        button.icon = icons;
-    }
-    */
 }
 
 
