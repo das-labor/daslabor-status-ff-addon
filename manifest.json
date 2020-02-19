@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Laborstatus",
+  "version": "0.0.1",
+  "description": "A simple Web Extension which shows whether the Labor is open or not",
+  "homepage_url": "https://github.com/das-labor/daslabor-status-ff-addon",
+  "author": "Das Labor",
+  "icons": {
+    "16": "icons/laborlogo_16.png",
+    "32": "icons/laborlogo_32.png",
+    "64": "icons/laborlogo_64.png"
+  },
+  "permissions": [
+    "https://das-labor.org/status/status.php"
+  ],
+  "background": {
+    "scripts": ["index.js"]
+  },
+  "browser_action": {
+    "default_icon": "data/laborlogo_32.png",
+    "default_title": "Laborstatus"
+  }
+}
