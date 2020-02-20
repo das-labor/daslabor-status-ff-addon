@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "status-webextension@das-labor.org": {
+      "updates": [
+        {
+          "version": "0.1",
+          "update_link": "https://github.com/das-labor/status-webextension/releases/download/v0.0.1/laborstatus-0.0.1-an+fx.xpi"
+        }
+      ]
+    }
+  }
+}
