@@ -1,37 +1,31 @@
 
 # "Das Labor" status as a firefox Addon
 
-
  * http://das-labor.org/wiki/Status-Bot
 
+## Preparation:
 
-##try out
-
-```
-npm install jpm -g
-```
-
-Run test:
+Install `web-ext`:
 
 ```
-jpm run
+npm install web-ext
 ```
 
-
-Test and run in firefox:
-```
-jpm run -b /usr/bin/firefox 
-```
-
-Build:
+## Run
 
 ```
-jpm xpi
+web-ext run
 ```
 
+## Build
 
-
+```
+web-ext build
+```
 
 ## Todo
 
- * http://www.das-labor.org/termine.rss
+* prettier logo
+* maybe open https://das-labor.org on click
+* maybe integrate http://www.das-labor.org/termine.rss if anyone wants to - see _old/
+* make refresh interval configurable through "options_ui" in manifest.json
