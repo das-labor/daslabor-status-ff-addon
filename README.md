@@ -1,5 +1,4 @@
-
-# "Das Labor" status as a firefox Addon
+# "Das Labor" status as a WebExtension
 
  * http://das-labor.org/wiki/Status-Bot
 
