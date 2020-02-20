@@ -12,7 +12,8 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "status-webextension@das-labor.org"
+      "id": "status-webextension@das-labor.org",
+      "update_url": "https://raw.githubusercontent.com/das-labor/status-webextension/master/updates.json"
     }
   },
   "permissions": [
@@ -22,7 +23,7 @@
     "scripts": ["index.js"]
   },
   "browser_action": {
-    "default_icon": "data/laborlogo_32.png",
+    "default_icon": "icons/laborlogo_32.png",
     "default_title": "Laborstatus"
   }
 }
